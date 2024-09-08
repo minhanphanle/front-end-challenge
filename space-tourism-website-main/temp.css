@@ -1,20 +1,14 @@
-/**
- *
- * Custom properties
- *
- */
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
 
 :root {
   /* colors */
-
-  /* HSL color allows you to set opacity at the end */
-
   --clr-dark: 230 35% 7%;
   --clr-light: 231 77% 90%;
   --clr-white: 0 0% 100%;
 
   /* font-sizes */
-  /* default base font size = 16px */
   --fs-900: 9.375rem;
   --fs-800: 6.25rem;
   --fs-700: 3.5rem;
@@ -29,14 +23,14 @@
   --ff-sans-cond: "Barlow Condensed", sans-serif;
   --ff-sans-normal: "Barlow", sans-serif;
 }
-/**
- *
- * Reset
- * https://piccalil.li/blog/a-more-modern-css-reset/
- */
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
 
 /* Box sizing */
-
 *,
 *::before,
 *::after {
@@ -44,8 +38,6 @@
 }
 
 /* Reset margins */
-/* to not run into collapsing margin */
-
 body,
 h1,
 h2,
@@ -68,23 +60,19 @@ p {
   font-weight: 400;
 }
 
-/* set up body */
-
+/* set up the body */
 body {
   font-family: var(--ff-sans-normal);
   font-size: var(--fs-400);
-  line-height: 1.5;
-  /* default for browsing is 1.4 */
-
   color: hsl(var(--clr-white));
   background-color: hsl(var(--clr-dark));
-
+  line-height: 1.5;
   min-height: 100vh;
 }
 
 /* make images easier to work with */
 img,
-picture {
+picutre {
   max-width: 100%;
   display: block;
 }
@@ -95,7 +83,6 @@ button,
 textarea,
 select {
   font: inherit;
-  /* usually font does not inherit in these form elements */
 }
 
 /* remove animations for people who've turned them off */
@@ -110,39 +97,32 @@ select {
   }
 }
 
-/*=============================================
-=            Utility classes             =
-=============================================*/
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
+
+/* general */
 
 .flex {
   display: flex;
-  gap: var(--gap, 1em);
-}
-
-.flex-col {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap, 1em);
+  gap: var(--gap, 1rem);
 }
 
 .grid {
   display: grid;
-  gap: var(--gap, 1em);
+  gap: var(--gap, 1rem);
 }
 
-/* get utility class to work with components */
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1rem);
+}
 
 .container {
-  padding: 0 2em; /* 2 times the size of the font*/
-  /* same as padding-inline: 2em */
-  max-width: 80rem;
+  padding-inline: 2em;
   margin-inline: auto;
+  max-width: 80rem;
 }
 
-/* screen reader only */
-
-/* make it hidden but still available in the DOM */
-/* screen reader only */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -153,16 +133,6 @@ select {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap; /* added line */
   border: 0;
-}
-
-.box {
-  background-color: aqua;
-  padding: 3rem;
-}
-
-.flex-center {
-  align-items: center;
-  justify-content: center;
 }
 
 /* colors */
@@ -246,167 +216,85 @@ select {
 }
 
 .numbered-title {
-  display: flex;
-  gap: 24px;
   font-family: var(--ff-sans-cond);
-  letter-spacing: 4.72px;
-  text-transform: uppercase;
   font-size: var(--fs-500);
+  text-transform: uppercase;
+  letter-spacing: 4.72px;
 }
 
 .numbered-title span {
-  color: hsl(var(--clr-white) / 0.25);
+  margin-right: 0.5em;
   font-weight: 700;
+  color: hsl(var(--clr-white) / 0.25);
 }
 
-/* .flow > *:not(:last-child) 
-
-  pseu-do class has the same specificity with the class selector
-
-
-*/
-
-/* lobotomized owl 
-  the lobotomized owl does not add extra specificity
-
-.flow > * + * {
-  margin-top: 1rem;
-  outline: 1px red solid;
-} 
-
-*/
-
-.flow > *:where(:not(:first-child)) {
-  margin-top: var(--flow-space, 1rem);
-  /* outline: 1px red solid; */
-}
-
-.flow {
-  padding: 1em;
-}
-
-/**
- *
- * Components
- *
- */
+/* ------------------- */
+/* Compontents         */
+/* ------------------- */
 
 .large-button {
-  /* width: 17rem;
-  height: 17rem; */
-  border-radius: 50%;
-  padding: 0 2em;
-  display: grid;
-
-  /* short for align-item and justify-item */
-  place-items: center;
-
-  /* width / height  */
-  aspect-ratio: 1 / 1;
-
-  text-decoration: none;
-
-  /* create a new stacking context*/
   position: relative;
   z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 0 2em;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  text-decoration: none;
 }
 
 .large-button::after {
   content: "";
   position: absolute;
   z-index: -1;
-  background: hsl(var(--clr-white) / 0.2);
   width: 100%;
   height: 100%;
+  background: hsl(var(--clr-white) / 0.1);
   border-radius: 50%;
+  opacity: 0;
+  transition: opacity 500ms linear, transform 750ms ease-in-out;
 }
-
-/* :hover is pseudo-class, ::after is pseudo-element */
 
 .large-button:hover::after,
 .large-button:focus::after {
-  animation: pulse 2s infinite;
-}
-
-/* use scale or transform instead of width and height to prevent repaint or change content flow of docs, also GPU-accelerated, better for the browser
-
-*/
-
-@keyframes pulse {
-  0% {
-    transform: scale(1.5);
-    box-shadow: 0 0 0 0 hsl(inherit / 1);
-    opacity: 1;
-  }
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 hsl(inherit / 0.1);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1.5);
-    opacity: 1;
-  }
+  opacity: 1;
+  transform: scale(1.5);
 }
 
 .primary-navigation {
-  --gap: 7rem;
-  --underline-gap: 2em;
+  --gap: 8rem;
+  --underline-gap: 2rem;
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 .primary-navigation a {
   text-decoration: none;
-  color: var(--clr-white);
 }
 
 .primary-navigation a > span {
-  color: hsl(var(--clr-white));
   font-weight: 700;
   margin-right: 0.5em;
 }
 
-.underline-indicators .active,
-.underline-indicators > [aria-selected="true"] {
-  border-bottom-color: hsl(var(--clr-white) / 1);
-  color: hsl(var(--clr-white) / 1);
+.underline-indicators > * {
+  cursor: pointer;
+  padding: var(--underline-gap, 1rem) 0;
+  border: 0;
+  border-bottom: 0.2rem solid hsl(var(--clr-white) / 0);
 }
+
 .underline-indicators > *:hover,
 .underline-indicators > *:focus {
   border-color: hsl(var(--clr-white) / 0.5);
 }
 
-.underline-indicators > * {
-  cursor: pointer;
-  padding: var(--underline-gap, 1em) 0;
-  border: 0;
-  border-bottom: 0.2rem solid hsl(var(--clr-white) / 0);
+.underline-indicators > .active,
+.underline-indicators > [aria-selected="true"] {
+  border-color: hsl(var(--clr-white) / 1);
 }
 
-.second-nav {
-  --underline-gap: 1em;
-  --gap: 2em;
-  margin: 0;
-  padding: 0;
-}
-
-.dot-indicators > * {
-  border-radius: 50%;
-  aspect-ratio: 1;
-  border: 0;
-  cursor: pointer;
-  padding: 0.5em;
-  background-color: hsl(var(--clr-white) / 0.2);
-}
-
-.dot-indicators > *:hover,
-.dot-indicators > *:focus {
-  background-color: hsl(var(--clr-white) / 0.5);
-}
-
-.dot-indicators .active,
-.dot-indicators > [aria-selected="true"] {
-  background-color: hsl(var(--clr-white) / 1);
+.tab-list {
+  --gap: 2rem;
 }

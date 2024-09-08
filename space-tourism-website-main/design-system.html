@@ -59,7 +59,7 @@
         <section id="typography" style="margin: 4rem 0">
             <h2 class="numbered-title"><span>02 </span>Typography</h2>
             <div class="flex">
-                <div class="flow" style="flex-basis: 100%; padding:1em">
+                <div class="flow" style="flex-basis: 100%">
                     <div>
                         <p class="text-accent">Heading 1 - Bellefair Regular - 150px</p>
                         <p class="fs-900 ff-serif uppercase">Earth</p>
@@ -86,8 +86,8 @@
 
                 </div>
 
-                <div style="flex-basis: 100%">
-                    <div class="">
+                <div class="flow" style="flex-basis: 100%; --flow-space: 2rem">
+                    <div class="text-accent">
                         <p class="text-accent">Subheading 1 - BellefairA Regular - 28px</p>
                         <p class="ff-serif fs-500 uppercase">384,400 km</p>
                     </div>
@@ -115,8 +115,65 @@
                     </div>
                 </div>
             </div>
-    </div>
-    </section>
+        </section>
+
+        <section id="interactive-elements" style="margin: 4rem 0;">
+            <h2 class="numbered-title"><span>03 </span>Interactive Elements</h2>
+
+            <!-- navigation -->
+            <div>
+                <nav>
+                    <ul class="primary-navigation underline-indicators flex">
+                        <li class="active"><a class="uppercase text-white letter-spacing-2"
+                                href="#"><span>01</span>Active</a>
+                        <li><a class="uppercase text-white letter-spacing-2" href="#"><span>02</span>Hovered</a>
+                        <li><a class="uppercase text-white letter-spacing-2" href="#"><span>03</span>Idle</a>
+                    </ul>
+                </nav>
+
+            </div>
+
+
+            <div class="flex">
+                <div class="flow flex-center flex" style="margin-top: 5rem; flex-basis: 100%;align-items: flex-start;">
+                    <!-- explore button -->
+                    <div style="width: 50%;">
+                        <a href="#" class="large-button uppercase ff-serif text-dark bg-white fs-600">Explore</a>
+                    </div>
+                </div>
+                <div class="flow" style="--flow-space: 4rem;flex-basis: 100%">
+                    <!-- Tabs -->
+                    <div class="underline-indicators second-nav flex">
+                        <button aria-selected="true"
+                            class="active uppercase letter-spacing-2 text-accent bg-dark ff-sans-cond">Moon</button>
+                        <button aria-selected="false"
+                            class="uppercase letter-spacing-2 text-accent bg-dark ff-sans-cond">Mars</button>
+                        <button aria-selected="false"
+                            class="uppercase letter-spacing-2 text-accent bg-dark ff-sans-cond">Europa</button>
+                    </div>
+
+                    <!-- Dots-->
+                    <div class="dot-indicators flex">
+                        <button aria-selected="true"><span class="sr-only"></span></button>
+                        <button aria-selected="false"><span class="sr-only"></span></button>
+                        <button aria-selected="false"><span class="sr-only"></span></button>
+                    </div>
+
+                    <!-- Numbers -->
+                    <div class="dot-indicators flex-col" style="width: 3rem;">
+                        <button aria-selected="true">1</button>
+                        <button aria-selected="false">2</button>
+                        <button aria-selected="false">3</button>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+        </section>
     </div>
 
     <script src="index.pack.js"></script>
