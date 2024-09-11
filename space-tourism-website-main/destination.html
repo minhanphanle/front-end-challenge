@@ -15,11 +15,11 @@
 
     <!-- Our custom CSS -->
     <link rel="stylesheet" href="index.css">
-    <script type="module" src="index.js" defer></script>
     <title>Frontend Mentor | Space tourism website</title>
+    <script type="module" src="index-temp.js" defer></script>
 </head>
 
-<body>
+<body class="destination">
     <a class="skip-to-main-content" href="#main-content">Skip to main content</a>
     <header class="primary-header flex">
         <div>
@@ -59,11 +59,49 @@
             </ul>
         </nav>
     </header>
-    <main id="main-content" class="grid-container">
+
+
+    <main class="grid-container">
+
+        <img src="starter-code/assets/destination/image-moon.webp" alt="planet logo" id="planet-logo" />
+
+        <h1 class="fs-400 numbered-title"><span aria-hidden="true">01</span> Pick your destination</h1>
+        <nav>
+            <ul class="second-nav underline-indicators">
+                <li id="moon" class="uppercase text-white letter-spacing-2 ff-sans-cond">
+                    Moon
+                </li>
+                <li id="mars" class="uppercase text-white letter-spacing-2 ff-sans-cond">
+                    Mars
+                </li>
+                <li id="europa" class="uppercase text-white letter-spacing-2 ff-sans-cond">
+                    Europa
+                </li>
+                <li id="titan" class="uppercase text-white letter-spacing-2 ff-sans-cond">
+                    Titan
+                </li>
+            </ul>
+        </nav>
+
+        <span>Moon</span>
+
+        <p id='description'>
+            See our planet as you’ve never seen it before. A perfect relaxing trip away to help
+            regain perspective and come back refreshed. While you’re there, take in some history
+            by visiting the Luna 2 and Apollo 11 landing sites.
+        </p>
+        <div>
+            <div id='distance'>
+                Avg. distance
+                384,400 km
+            </div>
+
+            <div id='travel'>
+                Est. travel time
+                3 days
+            </div>
+        </div>
     </main>
 
-
-
-</body>
 
 </html>
