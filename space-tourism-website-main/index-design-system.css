@@ -4,15 +4,6 @@
  *
  */
 
-@media (max-width: 35rem) {
-}
-
-@media (min-width: 45rem) {
-}
-
-@media (min-width: 45rem) {
-}
-
 :root {
   /* colors */
 
@@ -24,10 +15,7 @@
 
   /* font-sizes */
   /* default base font size = 16px */
-
-  /* viewport unit does not count for zoom so has to add 1 rem */
-
-  --fs-900: clamp(5rem, 7vw + 1rem, 9.375rem); /* min, growth value, max*/
+  --fs-900: 9.375rem;
   --fs-800: 6.25rem;
   --fs-700: 3.5rem;
   --fs-600: 2rem;
@@ -55,35 +43,11 @@
   --s-50: 4px;
   --s-25: 2px;
 }
-
-@media (max-width: 375px) {
-  :root {
-  }
-}
-
-@media (max-width: 1024px) and (min-width: 376px) {
-  :root {
-    --fs-800: 5rem;
-    --fs-700: 2.5rem;
-    --fs-600: 1.5rem;
-    --fs-400: 1rem; /* body text */
-  }
-}
-
-@media (min-width: 1025px) {
-  :root {
-    --fs-800: 6.25rem;
-    --fs-700: 3.5rem;
-    --fs-600: 2rem;
-    --fs-400: 1.125rem;
-  }
-}
-
 /**
-   *
-   * Reset
-   * https://piccalil.li/blog/a-more-modern-css-reset/
-   */
+ *
+ * Reset
+ * https://piccalil.li/blog/a-more-modern-css-reset/
+ */
 
 /* Box sizing */
 
@@ -121,10 +85,6 @@ p {
 /* set up body */
 
 body {
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
   font-family: var(--ff-sans-normal);
   font-size: var(--fs-400);
   line-height: 1.5;
@@ -134,10 +94,6 @@ body {
   background-color: hsl(var(--clr-dark));
 
   min-height: 100vh;
-  display: grid;
-  grid-template-rows: min-content 1fr;
-
-  /* overflow-x: hidden; */
 }
 
 /* make images easier to work with */
@@ -169,8 +125,8 @@ select {
 }
 
 /*=============================================
-  =            Utility classes             =
-  =============================================*/
+=            Utility classes             =
+=============================================*/
 
 .flex {
   display: flex;
@@ -186,10 +142,6 @@ select {
 .grid {
   display: grid;
   gap: var(--gap, 1em);
-}
-
-.d-block {
-  display: block;
 }
 
 /* get utility class to work with components */
@@ -307,6 +259,12 @@ select {
   line-height: 1.1;
 }
 
+/**
+ *
+ * Component class
+ *
+ */
+
 .numbered-title {
   display: flex;
   gap: 24px;
@@ -322,21 +280,21 @@ select {
 }
 
 /* .flow > *:not(:last-child) 
-  
-    pseu-do class has the same specificity with the class selector
-  
-  
-  */
+
+  pseu-do class has the same specificity with the class selector
+
+
+*/
 
 /* lobotomized owl 
-    the lobotomized owl does not add extra specificity
-  
-  .flow > * + * {
-    margin-top: 1rem;
-    outline: 1px red solid;
-  } 
-  
-  */
+  the lobotomized owl does not add extra specificity
+
+.flow > * + * {
+  margin-top: 1rem;
+  outline: 1px red solid;
+} 
+
+*/
 
 .flow > *:where(:not(:first-child)) {
   margin-top: var(--flow-space, 1rem);
@@ -348,16 +306,17 @@ select {
 }
 
 /**
-   *
-   * Components
-   *
-   */
+ *
+ * Components
+ *
+ */
 
 .large-button {
-  font-size: 2rem;
+  /* width: 17rem;
+  height: 17rem; */
   border-radius: 50%;
   padding: 0 2em;
-  display: inline-grid;
+  display: grid;
 
   /* short for align-item and justify-item */
   place-items: center;
@@ -390,8 +349,8 @@ select {
 }
 
 /* use scale or transform instead of width and height to prevent repaint or change content flow of docs, also GPU-accelerated, better for the browser
-  
-  */
+
+*/
 
 @keyframes pulse {
   0% {
@@ -410,12 +369,13 @@ select {
   }
 }
 
-/*=============================================
-=            Navigation            =
-=============================================*/
-
-/* 560px */
-/* for side bar */
+.primary-navigation {
+  --gap: 7rem;
+  --underline-gap: 2em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
 .primary-navigation a {
   text-decoration: none;
@@ -445,89 +405,6 @@ select {
   border-bottom: 0.2rem solid hsl(var(--clr-white) / 0);
 }
 
-.mobile-nav-toggle {
-  display: none;
-}
-
-.primary-navigation {
-  --gap: clamp(1.5rem, 5vw, 3.5rem);
-  --underline-gap: 1.5em;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  background: hsl(var(--clr-dark) / 0.95);
-}
-
-@supports (backdrop-filter: blur(4.8px)) {
-  .primary-navigation {
-    background: hsl(var(--clr-white) / 0.03);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(4.8px);
-  }
-}
-
-@media (max-width: 35rem) {
-  .primary-navigation {
-    z-index: 1000;
-    padding: min(20rem, 18vh) 2rem;
-    inset: 0 0 0 30%;
-    position: fixed;
-    flex-direction: column;
-    --underline-gap: 0.5em;
-    transform: translateX(100%);
-    transition: transform 1s ease-in-out;
-  }
-
-  .primary-navigation.active {
-    /* transition: 0.3s; */
-    transform: translateX(0%);
-  }
-
-  /* add specificity whenever possible to reduce conflict */
-  .primary-navigation.underline-indicators > * {
-    border: 0;
-  }
-
-  .mobile-nav-toggle {
-    display: block;
-    position: absolute;
-    z-index: 2000;
-    right: 1rem;
-    top: 2rem;
-    background: transparent;
-    background-image: url("starter-code/assets/shared/icon-hamburger.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 2rem;
-    aspect-ratio: 1;
-    border: 0;
-  }
-
-  .mobile-nav-toggle.expanded {
-    background-image: url("starter-code/assets/shared/icon-close.svg");
-  }
-
-  /* focus: apply to both mouse and keyboard nav, focus-visible: only mouse */
-  .mobile-nav-toggle:focus-visible {
-    outline: 3px solid white;
-    outline-offset: 5px;
-  }
-}
-
-.logo {
-  margin: 2rem clamp(1.5rem, 5vw, 3.5rem);
-}
-
-@media (min-width: 35em) and (max-width: 45em) {
-  .primary-navigation {
-    padding-inline: 3rem;
-  }
-
-  .primary-navigation a > span {
-    display: none;
-  }
-}
-
 .second-nav {
   --underline-gap: 1em;
   --gap: 2em;
@@ -553,120 +430,3 @@ select {
 .dot-indicators > [aria-selected="true"] {
   background-color: hsl(var(--clr-white) / 1);
 }
-
-.container {
-  padding-inline: 2em;
-  margin-inline: auto;
-  max-width: 80rem;
-}
-
-.grid-container {
-  border: 5px solid limegreen;
-  display: grid;
-  text-align: center;
-  place-items: center; /* short for align-items and justify-items*/
-  padding-inline: 1rem;
-}
-
-.grid-container * {
-  max-width: 50ch;
-}
-
-@media (min-width: 45rem) {
-  .grid-container {
-    text-align: left;
-    column-gap: var(--container-gap, 2rem);
-    grid-template-columns: minmax(2em, 1fr) repeat(2, minmax(0, 40rem)) minmax(
-        2em,
-        1fr
-      );
-  }
-
-  .grid-container > *:first-child {
-    grid-column: 2;
-  }
-
-  .grid-container > *:last-child {
-    grid-column: 3;
-  }
-
-  .grid-container--home {
-    padding-bottom: max(
-      6rem,
-      20vh
-    ); /* in case of a very large screen then use 20vh*/
-    /* place-content: end; */
-    align-items: end;
-    /* align-content: end; */
-  }
-
-  body {
-    grid-template-rows: 8.5rem 1fr;
-  }
-}
-
-.primary-header {
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* .primary-header > *:first-child {
-  align-self: flex-end;
-  margin-inline: 3rem;
-  height: calc(var(--underline-gap) * 2 + var(--fs-400) * 1.5);
-  display: flex;
-  align-items: center;
-  width: fit-content;
-} */
-
-/* .primary-header > *:first-child .line {
-  color: hsl(var(--clr-light) / 0.25);
-  position: absolute;
-  width: 30rem;
-  height: 3px;
-  margin-left: 4rem;
-  z-index: 1;
-  top: 50%;
-  left: 0;
-  right: 0;
-} */
-
-/* .primary-header > * {
-  border: 1px solid blue;
-} */
-
-/* .primary-header > button {
-  display: none;
-} */
-
-/* .mobile-nav::before,
-.mobile-nav::after {
-  content: "";
-} */
-
-/*=====  End of Navigation  ======*/
-
-/*=============================================
-=            Page Specific Background         =
-=============================================*/
-
-.home {
-  background-image: url("starter-code/assets/home/background-home-mobile.jpg");
-}
-
-@media (min-width: 35rem) {
-  .home {
-    background-position: center center;
-    background-image: url("starter-code/assets/home/background-home-tablet.jpg");
-  }
-}
-
-@media (min-width: 45rem) {
-  .home {
-    background-size: cover;
-    background-position: bottom center;
-    background-image: url("starter-code/assets/home/background-home-desktop.jpg");
-  }
-}
-
-/*=====  End of Page Specific Background  ======*/
