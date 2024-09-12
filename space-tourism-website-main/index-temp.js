@@ -53,13 +53,14 @@ allPlanets.forEach((el) => {
       dataObj = pageData.destinations[0];
     }
 
-    const { images, description, distance, travel } = dataObj;
+    const { images, description, distance, travel, name } = dataObj;
 
     const dict = {
-      distance: distance,
-      travel: travel,
+      "distance-data": distance,
+      "travel-data": travel,
       description: description,
       "planet-logo": images.webp,
+      "planet-name": name,
     };
 
     for (const [key, value] of Object.entries(dict)) {

@@ -473,7 +473,7 @@ nav a {
 @media (max-width: 35em) {
   .primary-navigation {
     z-index: 1000;
-    padding: min(20rem, 18vh) 2rem;
+    padding: min(20rem, 15vh) 2rem;
     inset: 0 0 0 30%;
     position: fixed;
     flex-direction: column;
@@ -482,15 +482,15 @@ nav a {
     transition: transform 1s ease-in-out;
   }
 
-  .primary-navigation.active {
+  .active {
     /* transition: 0.3s; */
     transform: translateX(0%);
   }
 
   /* add specificity whenever possible to reduce conflict */
-  .primary-navigation.underline-indicators > * {
+  /* .primary-navigation.underline-indicators > * {
     border: 0;
-  }
+  } */
 
   .mobile-nav-toggle {
     display: block;
@@ -523,8 +523,8 @@ nav a {
   border-color: hsl(var(--clr-white) / 0.5);
 }
 
-.underline-indicators > .active,
-.underline-indicators > [aria-selected="true"] {
+.underline-indicators .active,
+.underline-indicators [aria-selected="true"] {
   color: hsl(var(--clr-white) / 1);
   border-color: hsl(var(--clr-white) / 1);
 }
@@ -713,15 +713,125 @@ nav a {
 =            Destination Main Content         =
 =============================================*/
 
-@media (max-width: 35em) {
+.destination p {
+  /* padding: 2rem 0; */
+  line-height: 180%;
+}
+
+.distance-travel-container span {
+  display: block;
+  letter-spacing: 3px;
+}
+
+.distance-travel-container {
+  border-top: 1px solid hsl(var(--clr-white) / 0.1);
+  padding-top: 2rem;
+  display: grid;
+  gap: (var(--gap), 2rem);
+  width: 100%;
+  height: 100%;
+}
+
+#distance > span,
+#travel > span {
+  margin-bottom: 0.5rem;
+}
+
+.destination .second-nav {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+#planet-logo {
+  max-width: 90%;
+}
+
+@media (max-width: 34.999em) {
+  #planet-logo {
+    height: 15rem;
+  }
   .destination h1.numbered-title {
     font-size: var(--fs-400);
   }
 
-  .destination .second-nav {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
+  .distance-travel-container {
+    place-items: start center;
+  }
+}
+
+@media (min-width: 35em) and (max-width: 44.999em) {
+  #planet-logo {
+    height: 17rem;
+  }
+
+  .destination h1.numbered-title {
+    place-self: end start;
+    font-size: var(--fs-400);
+  }
+
+  .distance-travel-container {
+    grid-template-columns: 1fr 1fr;
+    place-content: start start;
+  }
+
+  .destination .grid-container {
+    grid-template-rows: minmax(max-content, 5vh) fit-content 10vh repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 45em) {
+  #planet-logo {
+    min-width: 20rem;
+  }
+  .grid-container--destination {
+    justify-items: start;
+    align-content: start;
+    grid-template-rows:
+      minmax(8vh, 10vh) max-content repeat(2, min(15vh, 20rem))
+      1fr;
+    overflow-y: hidden;
+  }
+
+  .destination h1.numbered-title {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+    align-self: start;
+  }
+
+  .destination #planet-logo {
+    grid-column: 2 / 3;
+    grid-row: 2/6;
+    align-self: start;
+    justify-self: center;
+  }
+
+  .grid-container--destination #planet-name,
+  .grid-container--destination nav,
+  .distance-travel-container,
+  .grid-container--destination #description {
+    grid-column: 3/4;
+    place-items: start start;
+  }
+
+  .grid-container--destination nav {
+    grid-row: 2/3;
+  }
+  .grid-container--destination #planet-name {
+    grid-row: 3/4;
+    font-size: var(--fs-800);
+  }
+  .grid-container--destination #description {
+    grid-row: 4/5;
+    --margin-seperator: 2rem;
+    place-self: start start;
+  }
+
+  .distance-travel-container {
+    grid-row: 5/6;
+    grid-template-columns: 1fr 1fr;
+    place-content: start start;
+    --gap: min(6vw, 6rem);
   }
 }
 

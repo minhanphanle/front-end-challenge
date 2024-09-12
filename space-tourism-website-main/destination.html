@@ -31,7 +31,7 @@
 
         <nav>
             <ul id="primary-navigation" class="primary-navigation underline-indicators flex">
-                <li><a class="uppercase text-white letter-spacing-2 ff-sans-cond active" href="/">
+                <li class="active"><a class="uppercase text-white letter-spacing-2 ff-sans-cond" href="/">
                         <span aria-hidden="true">
                             00
                         </span>
@@ -61,14 +61,15 @@
     </header>
 
 
-    <main class="grid-container">
+    <main class="grid-container grid-container--destination">
+
+
+        <h1 class="numbered-title"><span aria-hidden="true">01</span> Pick your destination</h1>
 
         <img src="starter-code/assets/destination/image-moon.webp" alt="planet logo" id="planet-logo" />
-
-        <h1 class="fs-400 numbered-title"><span aria-hidden="true">01</span> Pick your destination</h1>
         <nav>
             <ul class="second-nav underline-indicators">
-                <li id="moon" class="uppercase text-white letter-spacing-2 ff-sans-cond">
+                <li id="moon" class="uppercase text-white letter-spacing-2 ff-sans-cond active">
                     Moon
                 </li>
                 <li id="mars" class="uppercase text-white letter-spacing-2 ff-sans-cond">
@@ -83,22 +84,24 @@
             </ul>
         </nav>
 
-        <span>Moon</span>
+        <span class="ff-serif uppercase fs-900" id='planet-name'>Moon</span>
 
-        <p id='description'>
+        <p class="ff-sans-normal text-accent" id='description'>
             See our planet as you’ve never seen it before. A perfect relaxing trip away to help
             regain perspective and come back refreshed. While you’re there, take in some history
             by visiting the Luna 2 and Apollo 11 landing sites.
         </p>
-        <div>
-            <div id='distance'>
-                Avg. distance
-                384,400 km
+
+        <div class="distance-travel-container">
+            <div class="fs-500 ff-serif uppercase" id='distance'>
+                <span class="uppercase ff-sans-cond fs-400 text-accent">Avg. distance</span>
+                <span id="distance-data">
+                    384,400 km </span>
             </div>
 
-            <div id='travel'>
-                Est. travel time
-                3 days
+            <div class="fs-500 ff-serif uppercase" id='travel'>
+                <span class="uppercase ff-sans-cond fs-400 text-accent"> Est. travel time</span>
+                <span id="travel-data"> 3 days </span>
             </div>
         </div>
     </main>
