@@ -625,7 +625,7 @@ nav a {
   padding-inline: 1rem;
 }
 
-.grid-container * {
+.grid-container p:not([class]) {
   max-width: 50ch;
 }
 
@@ -751,8 +751,10 @@ nav a {
 .distance-travel-container {
   border-top: 1px solid hsl(var(--clr-white) / 0.1);
   padding-top: 2rem;
-  display: grid;
-  gap: (var(--gap), 2rem);
+  margin-top: 2rem;
+  display: flex;
+  gap: (var(--gap), 5rem);
+  justify-content: center;
   width: 100%;
   height: 100%;
 }
@@ -768,8 +770,30 @@ nav a {
   gap: 2rem;
 }
 
+.grid-container--destination {
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(4vh, 10vh) auto min(20vh, auto) 1fr;
+}
+
 #planet-logo {
+  grid-column: 3/4;
   max-width: 90%;
+  grid-column: 1;
+}
+
+.destination h1.numbered-title {
+  grid-row: 1/2;
+  grid-column: 1;
+}
+
+.grid-container--destination nav {
+  grid-row: 2/3;
+  grid-column: 1;
+}
+
+.destination-info {
+  grid-row: 4/5;
+  grid-column: 1;
 }
 
 @media (max-width: 34.999em) {
@@ -781,7 +805,8 @@ nav a {
   }
 
   .distance-travel-container {
-    place-items: start center;
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -790,32 +815,38 @@ nav a {
     height: 17rem;
   }
 
+  .distance-travel-container > * {
+    width: 40%;
+  }
+
   .destination h1.numbered-title {
-    place-self: end start;
+    place-self: start start;
     font-size: var(--fs-400);
   }
 
-  .distance-travel-container {
-    grid-template-columns: 1fr 1fr;
-    place-content: start start;
-  }
-
-  .destination .grid-container {
-    grid-template-rows: minmax(max-content, 5vh) fit-content 10vh repeat(2, 1fr);
-  }
+  /* .destination .grid-container {
+    grid-template-columns: 100%;
+    grid-template-rows: minmax(max-content, 5vh) 1fr;
+  } */
 }
 
 @media (min-width: 45em) {
   #planet-logo {
     min-width: 20rem;
   }
+  .distance-travel-container > * {
+    width: 100%;
+  }
   .grid-container--destination {
     justify-items: start;
     align-content: start;
-    grid-template-rows:
-      minmax(8vh, 10vh) max-content repeat(2, min(15vh, 20rem))
-      1fr;
-    overflow-y: hidden;
+    grid-template-columns: minmax(2em, 1fr) repeat(2, minmax(0, 30rem)) minmax(
+        2em,
+        1fr
+      );
+    grid-template-rows: minmax(8vh, 10vh) auto repeat(3, 1fr);
+    place-items: start start;
+    column-gap: 3rem;
   }
 
   .destination h1.numbered-title {
@@ -829,6 +860,7 @@ nav a {
     grid-row: 2/6;
     align-self: start;
     justify-self: center;
+    max-width: none;
   }
 
   .grid-container--destination #planet-name,
@@ -843,20 +875,24 @@ nav a {
     grid-row: 2/3;
   }
   .grid-container--destination #planet-name {
-    grid-row: 3/4;
     font-size: var(--fs-800);
   }
   .grid-container--destination #description {
-    grid-row: 4/5;
     --margin-seperator: 2rem;
     place-self: start start;
+    margin-top: 2rem;
   }
 
   .distance-travel-container {
-    grid-row: 5/6;
     grid-template-columns: 1fr 1fr;
     place-content: start start;
     --gap: min(6vw, 6rem);
+  }
+
+  .destination-info {
+    grid-column: 2 / 3;
+    grid-row: 3/6;
+    margin-top: 2rem;
   }
 }
 
@@ -893,7 +929,7 @@ img#crew-pic {
 .crew .dot-indicators {
   grid-area: nav;
   font-size: 0.625rem;
-  gap: min(5rem, 4vw);
+  gap: min(2rem, 3vw);
 }
 
 .grid-container--crew {
@@ -941,7 +977,6 @@ img#crew-pic {
     height: 0.938rem;
   }
   img#crew-pic {
-    height: min(30rem, 50rem);
     margin-bottom: 0rem;
   }
 
@@ -961,7 +996,10 @@ img#crew-pic {
   .grid-container--crew {
     padding: min(2vh, 10rem) 0;
     grid-template-rows: minmax(auto, 8vh) minmax(auto, 20vh) auto 1fr;
-    grid-template-columns: minmax(2em, 1fr) auto auto minmax(2em, 1fr);
+    grid-template-columns: minmax(2em, 1fr) repeat(2, minmax(0, 30rem)) minmax(
+        2em,
+        1fr
+      );
 
     place-items: start start;
 
