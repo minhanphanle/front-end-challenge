@@ -40,12 +40,9 @@ const allPlanets = document.querySelectorAll(".destination .second-nav li");
 
 allPlanets.forEach((el) => {
   el.addEventListener("click", () => {
-    console.log(el.getAttribute("id"));
     const id = el.getAttribute("id");
     const capitalizedId = id.charAt(0).toUpperCase() + id.slice(1);
     const key = capitalizedId;
-
-    console.log(key);
 
     let dataObj = pageData.destinations.find((obj) => obj.name === key);
 
@@ -71,6 +68,36 @@ allPlanets.forEach((el) => {
       }
 
       div.innerHTML = value;
+    }
+  });
+});
+
+const allCrew = document.querySelectorAll(".crew .dot-indicators button");
+
+allCrew.forEach((el) => {
+  el.addEventListener("click", () => {
+    const id = el.getAttribute("id");
+
+    const crewData = pageData.crew.find((d, i) => i === Number(id));
+
+    const { name, images, role, bio } = crewData;
+
+    const dict = {
+      "crew-name": name,
+      "crew-role": role,
+      "crew-description": bio,
+      "crew-pic": images.webp,
+    };
+
+    for (const [key, val] of Object.entries(dict)) {
+      const elem = document.getElementById(key);
+      if (key === "crew-pic") {
+        elem.src = val;
+      }
+
+      if (elem) {
+        elem.innerHTML = val;
+      }
     }
   });
 });
