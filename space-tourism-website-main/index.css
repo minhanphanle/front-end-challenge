@@ -768,16 +768,26 @@ nav a {
   list-style: none;
   display: flex;
   gap: 2rem;
+  background-color: none;
+}
+
+.destination .second-nav button {
+  background-color: transparent;
 }
 
 .grid-container--destination {
   grid-template-columns: 1fr;
-  grid-template-rows: minmax(4vh, 10vh) auto min(20vh, auto) 1fr;
+  grid-template-rows: minmax(6vh, 10vh) auto min(20vh, auto) 1fr;
 }
 
 #planet-logo {
-  grid-column: 3/4;
-  max-width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+#planet-logo *,
+#planet-logo {
+  grid-column: 2/3;
   grid-column: 1;
 }
 
@@ -787,7 +797,7 @@ nav a {
 }
 
 .grid-container--destination nav {
-  grid-row: 2/3;
+  grid-row: 3/4;
   grid-column: 1;
 }
 
@@ -797,8 +807,9 @@ nav a {
 }
 
 @media (max-width: 34.999em) {
+  #planet-logo *,
   #planet-logo {
-    height: 15rem;
+    max-width: 60%;
   }
   .destination h1.numbered-title {
     font-size: var(--fs-400);
@@ -811,8 +822,9 @@ nav a {
 }
 
 @media (min-width: 35em) and (max-width: 44.999em) {
+  #planet-logo *,
   #planet-logo {
-    height: 17rem;
+    max-width: 60%;
   }
 
   .distance-travel-container > * {
@@ -820,20 +832,12 @@ nav a {
   }
 
   .destination h1.numbered-title {
-    place-self: start start;
+    place-self: end start;
     font-size: var(--fs-400);
   }
-
-  /* .destination .grid-container {
-    grid-template-columns: 100%;
-    grid-template-rows: minmax(max-content, 5vh) 1fr;
-  } */
 }
 
 @media (min-width: 45em) {
-  #planet-logo {
-    min-width: 20rem;
-  }
   .distance-travel-container > * {
     width: 100%;
   }
@@ -855,12 +859,12 @@ nav a {
     align-self: start;
   }
 
-  .destination #planet-logo {
+  .destination #planet-logo *,
+  #planet-logo {
     grid-column: 2 / 3;
     grid-row: 2/6;
     align-self: start;
     justify-self: center;
-    max-width: none;
   }
 
   .grid-container--destination #planet-name,
