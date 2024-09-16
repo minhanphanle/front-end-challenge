@@ -10,6 +10,13 @@ import {
  * SPA Client Side Routing and content swapping
  */
 
+// document
+//   .querySelector(".skip-to-main-content")
+//   .addEventListener("click", function (e) {
+//     e.preventDefault();
+//     document.querySelector("#main-content").focus();
+//   });
+
 export async function fetchData() {
   const path = "starter-code/data.json";
 
@@ -29,36 +36,33 @@ export async function fetchData() {
 
 // Define our routes
 const routes = {
-  "/": "home",
-  "/destination": "destination",
-  "/crew": "crew",
-  "/technology": "technology",
+  "/space-tourism-website/": "home",
+  "/space-tourism-website/destination": "destination",
+  "/space-tourism-website/crew": "crew",
+  "/space-tourism-website/technology": "technology",
 };
 
 // This function will update the content based on the current route
 async function updateContent(route) {
-  const data = await fetchData();
-
   const main = document.querySelector("main");
 
   // Add new classes to the content element based on the current route
   // Update the content based on the route
   // For each route:
   //   - Set the innerHTML of the content element
-  let pageData;
 
   switch (route) {
-    case "/":
+    case "/space-tourism-website/":
       main.innerHTML = mainHTML;
       break;
 
-    case "/destination":
+    case "/space-tourism-website/destination":
       main.innerHTML = destinationHTML;
       break;
-    case "/technology":
+    case "/space-tourism-website/technology":
       main.innerHTML = technologyHTML;
       break;
-    case "/crew":
+    case "/space-tourism-website/crew":
       main.innerHTML = crewHTML;
       break;
     default:
@@ -70,7 +74,7 @@ async function updateContent(route) {
 
   let scriptsToLoad;
 
-  if (route !== "/") {
+  if (route !== "/space-tourism-website/") {
     scriptsToLoad = [`css-js/${routes[route]}.js`, "css-js/tabs.js"];
   } else {
     scriptsToLoad = [];
@@ -116,7 +120,6 @@ async function handleNavigation(event) {
   const link = event.target.closest("a");
   if (!link || !link.href || !link.href.startsWith(window.location.origin))
     return;
-  // TODO: Prevent the default link behavior
   event.preventDefault();
 
   const href = link.getAttribute("href");
@@ -124,7 +127,6 @@ async function handleNavigation(event) {
   if (href && routes.hasOwnProperty(href)) {
     history.pushState({}, "", href); // update the URL without reloading the page
     await updateContent(href);
-    console.log(history.length);
   }
 }
 
@@ -142,13 +144,10 @@ async function init() {
   // This will handle browser back/forward navigation
   window.addEventListener("popstate", async () => {
     await updateContent(window.location.pathname);
-
-    console.log(window.location.pathname);
   });
 
   // Call updateContent with the initial route (window.location.pathname)
   await updateContent(window.location.pathname);
-  console.log(window.location.pathname);
 }
 
 // TODO: Add an event listener for DOMContentLoaded

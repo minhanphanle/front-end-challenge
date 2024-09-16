@@ -21,12 +21,10 @@ function changeTabFocus(e) {
 
   if (e.keyCode === keydownLeft) {
     curr = (curr - 1 + tabs.length) % tabs.length;
-    console.log("curr left", curr);
   }
 
   if (e.keyCode === keydownRight) {
     curr = (curr + 1) % tabs.length;
-    console.log("curr right", curr);
   }
 
   // change the current tabs to be focusable
@@ -47,6 +45,4 @@ function changeTabPanel(e) {
   e.target.classList.add("active");
 
   prevElem.classList.remove("active");
-
-  console.log("hi");
 }

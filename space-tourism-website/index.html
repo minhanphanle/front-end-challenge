@@ -15,8 +15,8 @@
 
     <!-- Our custom CSS -->
     <link rel="stylesheet" href="index.css">
-    <script type="module" src="index.js"></script>
-    <script type="module" src="css-js/nav.js"></script>
+    <script type="module" src="index.js" defer></script>
+    <script type="module" src="./css-js/nav.js" defer></script>
     <title>Space tourism website</title>
 </head>
 
@@ -32,25 +32,27 @@
 
         <nav>
             <ul id="primary-navigation" class="primary-navigation underline-indicators flex">
-                <li><a class="uppercase text-white letter-spacing-2 ff-sans-cond" href="/">
+                <li><a class="uppercase text-white letter-spacing-2 ff-sans-cond active" href="/space-tourism-website/">
                         <span aria-hidden="true">
                             00
                         </span>
                         Home
                     </a></li>
-                <li><a class="uppercase text-white letter-spacing-2 ff-sans-cond" href="/destination">
+                <li><a class="uppercase text-white letter-spacing-2 ff-sans-cond"
+                        href="/space-tourism-website/destination">
                         <span aria-hidden="true">
                             01
                         </span>
                         Destination
                     </a></li>
-                <li><a class="uppercase text-white letter-spacing-2 ff-sans-cond" href="/crew">
+                <li><a class="uppercase text-white letter-spacing-2 ff-sans-cond" href="/space-tourism-website/crew">
                         <span aria-hidden="true">
                             02
                         </span>
                         Crew
                     </a></li>
-                <li><a class="uppercase text-white letter-spacing-2 ff-sans-cond" href="/technology">
+                <li><a class="uppercase text-white letter-spacing-2 ff-sans-cond"
+                        href="/space-tourism-website/technology">
                         <span aria-hidden="true">
                             03
                         </span>
@@ -60,7 +62,7 @@
             </ul>
         </nav>
     </header>
-    <main id="main-content" class="grid-container">
+    <main class="grid-container">
     </main>
 
 
