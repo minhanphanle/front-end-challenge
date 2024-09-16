@@ -4,13 +4,13 @@
  *
  */
 
-@media (max-width: 35rem) {
+@media (max-width: 34.99em) {
 }
 
-@media (min-width: 45rem) {
+@media (min-width: 35em) and (max-width: 44.99em) {
 }
 
-@media (min-width: 45rem) {
+@media (min-width: 45em) {
 }
 
 :root {
@@ -266,7 +266,7 @@ select {
 }
 
 .text-gray {
-  color: hsl(var(--clr-white) / 0.25);
+  color: hsl(var(--clr-white) / 0.5);
 }
 
 /* typography */
@@ -468,12 +468,13 @@ nav a {
   background: hsl(var(--clr-dark) / 0.95);
 }
 
-.underline-indicators > * {
+.underline-indicators * {
   cursor: pointer;
   padding: var(--underline-gap, 1em) 0;
   border: 0;
   border-bottom: 0.2rem solid hsl(var(--clr-white) / 0);
 }
+
 @media (max-width: 35em) {
   .primary-navigation {
     z-index: 1000;
@@ -483,7 +484,7 @@ nav a {
     flex-direction: column;
     --underline-gap: 0.5em;
     transform: translateX(100%);
-    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in;
   }
 
   .active {
@@ -525,12 +526,6 @@ nav a {
 .underline-indicators > *:hover,
 .underline-indicators > *:focus {
   border-color: hsl(var(--clr-white) / 0.5);
-}
-
-.underline-indicators .active,
-.underline-indicators [aria-selected="true"] {
-  color: hsl(var(--clr-white) / 1);
-  border-color: hsl(var(--clr-white) / 1);
 }
 
 @supports (backdrop-filter: blur(4.8px)) {
@@ -625,7 +620,7 @@ nav a {
   padding-inline: 1rem;
 }
 
-.grid-container p:not([class]) {
+.grid-container p {
   max-width: 50ch;
 }
 
@@ -639,11 +634,11 @@ nav a {
       );
   }
 
-  .grid-container > *:first-child {
+  .grid-container--home > *:first-child {
     grid-column: 2;
   }
 
-  .grid-container > *:last-child {
+  .grid-container--home > *:last-child {
     grid-column: 3;
   }
 
@@ -656,6 +651,12 @@ nav a {
     align-items: end;
     /* align-content: end; */
   }
+}
+
+.underline-indicators .active,
+.underline-indicators [aria-selected="true"] {
+  color: hsl(var(--clr-white) / 1);
+  border-color: hsl(var(--clr-white) / 1);
 }
 
 .primary-header {
@@ -731,8 +732,42 @@ nav a {
     background-image: url("starter-code/assets/crew/background-crew-desktop.jpg");
   }
 }
+/* Technology Screen */
+
+.technology {
+  background-image: url("starter-code/assets/technology/background-technology-mobile.jpg");
+}
+
+@media (min-width: 35rem) {
+  .technology {
+    background-position: center center;
+    background-image: url("starter-code/assets/technology/background-technology-tablet.jpg");
+  }
+}
+
+@media (min-width: 45rem) {
+  .technology {
+    background-size: cover;
+    background-position: bottom center;
+    background-image: url("starter-code/assets/technology/background-technology-desktop.jpg");
+  }
+}
 
 /*=====  End of Page Specific Background  ======*/
+
+/*=============================================
+=            Home Main            =
+=============================================*/
+
+.grid-container--home h1 span {
+  padding: 2rem 0;
+}
+
+.grid-container--home p {
+  line-height: 1.9;
+}
+
+/*=====  End of Home Main  ======*/
 
 /*=============================================
 =            Destination Main Content         =
@@ -867,10 +902,7 @@ nav a {
     justify-self: center;
   }
 
-  .grid-container--destination #planet-name,
-  .grid-container--destination nav,
-  .distance-travel-container,
-  .grid-container--destination #description {
+  .grid-container--destination nav {
     grid-column: 3/4;
     place-items: start start;
   }
@@ -894,7 +926,7 @@ nav a {
   }
 
   .destination-info {
-    grid-column: 2 / 3;
+    grid-column: 3 / 4;
     grid-row: 3/6;
     margin-top: 2rem;
   }
@@ -920,14 +952,21 @@ article {
   grid-area: article;
 }
 
-img#crew-pic {
+#crew-pic {
   grid-area: img;
-  margin-bottom: -2rem;
+  max-width: 60%;
+  display: flex;
+  /* margin-bottom: -2rem;
+  padding-bottom: 6rem; */
 }
 
 .crew article {
   /* padding: 2rem 0; */
   line-height: 180%;
+}
+
+.crew article p {
+  max-width: 50ch;
 }
 
 .crew .dot-indicators {
@@ -945,12 +984,10 @@ img#crew-pic {
     "article"
     "nav"
     "img";
+  place-items: end center;
 }
 
 @media (max-width: 34.99em) {
-  #crew-pic {
-    height: 25rem;
-  }
 }
 
 @media (min-width: 35em) and (max-width: 44.99em) {
@@ -959,10 +996,7 @@ img#crew-pic {
       minmax(8vh, 40rem) repeat(2, fit-content) min(20vh, 5rem)
       fit-content;
   }
-  #crew-pic {
-    height: 27rem;
-    place-self: end center;
-  }
+
   .header {
     place-self: end start;
   }
@@ -979,9 +1013,11 @@ img#crew-pic {
 @media (min-width: 45em) {
   .crew .dot-indicators {
     height: 0.938rem;
+    place-self: start start;
   }
-  img#crew-pic {
+  #crew-pic {
     margin-bottom: 0rem;
+    max-width: 100%;
   }
 
   .header {
@@ -993,25 +1029,24 @@ img#crew-pic {
     place-self: end start;
   }
 
-  .crew .dot-indicators {
-    place-self: center start;
-  }
-
   .grid-container--crew {
+    place-items: end start;
     padding: min(2vh, 10rem) 0;
-    grid-template-rows: minmax(auto, 8vh) minmax(auto, 20vh) auto 1fr;
+    grid-template-rows: minmax(auto, 8vh) minmax(auto, 20vh) minmax(0, 12rem) 1fr;
     grid-template-columns: minmax(2em, 1fr) repeat(2, minmax(0, 30rem)) minmax(
         2em,
         1fr
       );
-
-    place-items: start start;
 
     grid-template-areas:
       ". header header ."
       ". title-name img ."
       ". article img ."
       ". nav img .";
+  }
+
+  .crew article {
+    align-self: start;
   }
 
   .title-name {
@@ -1024,3 +1059,155 @@ img#crew-pic {
 }
 
 /*=====  End of Crew Main Content  ======*/
+
+/*=============================================
+=            Technology Main            =
+=============================================*/
+
+nav.dot-indicators {
+  grid-area: nav;
+}
+
+nav.dot-indicators button {
+  background-color: hsl(var(--clr-white) / 0.01);
+  border: 0.09rem solid hsl(var(--clr-white) / 0.3);
+}
+
+nav.dot-indicators button.active {
+  color: hsl(var(--clr-dark));
+}
+
+picture#tech-photo {
+  grid-area: img;
+}
+
+picture#tech-photo > * {
+  width: 100vw;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+  margin-inline: -2rem;
+  max-width: none;
+}
+
+h1.numbered-title {
+  grid-area: header;
+  font-size: var(--fs-400);
+  align-self: center;
+}
+
+.technology article {
+  grid-area: article;
+  margin-bottom: 2rem;
+}
+
+.technology article p {
+  line-height: 1.8;
+  margin-top: 2rem;
+}
+
+.grid-container--technology {
+  grid-template-areas:
+    "header"
+    "img"
+    "nav"
+    "article";
+  grid-template-rows: minmax(auto, 5rem) auto 3rem 1fr;
+  row-gap: 1.5rem;
+  place-items: start center;
+}
+
+.technology article span:nth-child(2) {
+  font-size: var(--fs-700);
+}
+
+.technology article span:first-child {
+  font-size: var(--fs-600);
+  display: block;
+}
+
+@media (max-width: 34.99em) {
+  nav.dot-indicators button {
+    width: 2.5rem;
+  }
+  picture#tech-photo,
+  picture#tech-photo > * {
+    max-height: min(35vh, 30rem);
+  }
+  .technology article span:first-child {
+    font-size: var(--fs-500);
+  }
+
+  .technology article span:nth-child(2) {
+    font-size: var(--fs-600);
+  }
+}
+
+@media (min-width: 35em) and (max-width: 44.99em) {
+  nav.dot-indicators button {
+    width: 3rem;
+  }
+  h1.numbered-title {
+    justify-self: start;
+  }
+
+  picture#tech-photo,
+  picture#tech-photo > * {
+    max-height: min(30vh, 50rem);
+  }
+}
+
+@media (min-width: 45em) {
+  .grid-container--technology {
+    grid-template-areas:
+      ". header header header ."
+      ". nav article img ."
+      ". nav article img ."
+      ". nav article img .";
+    grid-template-columns:
+      minmax(2em, 1fr) minmax(0, 5em) minmax(0, 40rem) minmax(0, 20rem)
+      minmax(2em, 1fr);
+    grid-template-rows:
+      minmax(auto, 2rem) minmax(auto, 15rem) minmax(auto, 15rem)
+      1fr;
+    place-items: center start;
+    padding-right: 0px;
+    /* column-gap: 1rem; */
+  }
+
+  picture#tech-photo,
+  picture#tech-photo > * {
+    object-fit: none;
+    width: 100%;
+    max-height: 40rem;
+    /* aspect-ratio: 1.5 / 2; */
+
+    object-fit: cover;
+    object-position: top;
+    margin-right: -50vw;
+    margin-inline: 0rem;
+    grid-column: 4 / -1;
+    align-self: center;
+  }
+
+  .technology nav.dot-indicators {
+    display: flex;
+    flex-direction: column;
+  }
+
+  nav.dot-indicators button {
+    width: 5vw;
+    max-width: 6rem;
+    min-width: 3rem;
+  }
+
+  h1.numbered-title {
+    font-size: var(--fs-600);
+  }
+
+  .technology p {
+    max-width: 55ch;
+  }
+}
+
+/*=====  End of Technology Main  ======*/

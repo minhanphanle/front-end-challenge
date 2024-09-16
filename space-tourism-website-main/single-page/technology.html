@@ -16,10 +16,12 @@
     <!-- Our custom CSS -->
     <link rel="stylesheet" href="index.css">
     <title>Frontend Mentor | Space tourism website</title>
-    <script type="module" src="index-temp.js" defer></script>
+    <script type="module" src="index.js" defer></script>
+    <script type="module" src="technology.js" defer></script>
+    <script type="module" src="tabs.js" defer></script>
 </head>
 
-<body class="crew">
+<body class="technology">
     <a class="skip-to-main-content" href="#main-content">Skip to main content</a>
     <header class="primary-header flex">
         <div>
@@ -61,39 +63,51 @@
     </header>
 
 
-    <main class="grid-container grid-container--crew">
-        <h1 class="numbered-title header"><span aria-hidden="true">02</span> Meet your crew</h1>
+    <main class="grid-container grid-container--technology">
 
 
-        <div class="fs-600 ff-serif title-name flex-col uppercase">
-            <span id="crew-role" class="text-gray fs-400 d-block ">Commander</span>
-            <span id="crew-name">Douglas Hurley </span>
-        </div>
+        <h1 class="numbered-title"><span aria-hidden="true">03</span> Space launch 101</h1>
 
-        <article class="ff-sans-normal text-accent" id='crew-description'>
 
-            Douglas Gerald Hurley is an American engineer, former Marine Corps pilot
-            and former NASA astronaut. He launched into space for the third time as
-            commander of Crew Dragon Demo-2.
-        </article>
 
-        <div>
 
-        </div>
-        <div class="dot-indicators flex">
-            <button id="1" aria-selected="true"><span class="sr-only"></span></button>
-            <button id="2" aria-selected="false"><span class="sr-only"></span></button>
-            <button id="3" aria-selected="false"><span class="sr-only"></span></button>
-            <button id="4" aria-selected="false"><span class="sr-only"></span></button>
-        </div>
-
-        <picture id="crew-pic">
-            <source srcset="starter-code/assets/crew/image-douglas-hurley.webp">
-            <img src="starter-code/assets/crew/image-douglas-hurley.png" alt="crew member picture" />
+        <picture id="tech-photo">
+            <source media="(min-width:45em)" srcset="starter-code/assets/technology/image-launch-vehicle-portrait.jpg">
+            <img id="tech-photo" src="starter-code/assets/technology/image-launch-vehicle-landscape.jpg"
+                alt="Technology Image">
         </picture>
 
 
 
+        <nav class="flex dot-indicators" role="tablist" aria-label="technology list">
+
+            <button aria-selected="true" id="0" tabindex="0" role="tab" id="launch-vehicle" aria-label="launch vehicle"
+                class="uppercase text-white letter-spacing-2 ff-sans-cond active">
+                1
+            </button>
+            <button aria-selected="false" id="1" tabindex="-1" role="tab" id="spaceport" aria-label="spaceport"
+                class="uppercase text-white letter-spacing-2 ff-sans-cond">
+                2
+            </button>
+            <button aria-selected="false" id="2" tabindex="-1" role="tab" id="space-capsule" aria-label="space-capsule"
+                class="uppercase text-white letter-spacing-2 ff-sans-cond">
+                3
+            </button>
+        </nav>
+
+        <article class="technology-info" tabindex="0" id="main-content">
+            <div>
+                <span class="ff-serif uppercase text-gray">The Terminology...</span>
+                <span id="tech-name" class="ff-serif uppercase"> Launch vehicle</span>
+            </div>
+
+            <p id="tech-description" class="ff-sans-normal text-accent">
+                A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a
+                payload from Earth's surface to space, usually to Earth orbit or beyond. Our
+                WEB-X carrier rocket is the most powerful in operation. Standing 150 metres tall,
+                it's quite an awe-inspiring sight on the launch pad!
+            </p>
+        </article>
     </main>
 
 

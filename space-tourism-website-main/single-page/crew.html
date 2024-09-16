@@ -15,12 +15,13 @@
 
     <!-- Our custom CSS -->
     <link rel="stylesheet" href="index.css">
-    <script type="module" src="index.js"></script>
-    <script type="module" src="css-js/nav.js"></script>
-    <title>Space tourism website</title>
+    <title>Frontend Mentor | Space tourism website</title>
+    <script type="module" src="crew.js" defer></script>
+    <script type="module" src="index.js" defer></script>
+    <script type="module" src="tabs.js" defer></script>
 </head>
 
-<body>
+<body class="crew">
     <a class="skip-to-main-content" href="#main-content">Skip to main content</a>
     <header class="primary-header flex">
         <div>
@@ -32,7 +33,7 @@
 
         <nav>
             <ul id="primary-navigation" class="primary-navigation underline-indicators flex">
-                <li><a class="uppercase text-white letter-spacing-2 ff-sans-cond" href="/">
+                <li class="active"><a class="uppercase text-white letter-spacing-2 ff-sans-cond" href="/">
                         <span aria-hidden="true">
                             00
                         </span>
@@ -60,11 +61,42 @@
             </ul>
         </nav>
     </header>
-    <main id="main-content" class="grid-container">
+
+
+    <main tabindex="0" id="main-content" class="grid-container grid-container--crew">
+        <h1 class="numbered-title header"><span aria-hidden="true">02</span> Meet your crew</h1>
+
+
+        <div class="fs-600 ff-serif title-name flex-col uppercase">
+            <span id="crew-role" class="text-gray fs-400 d-block ">Commander</span>
+            <span id="crew-name">Douglas Hurley </span>
+        </div>
+
+        <article class="ff-sans-normal text-accent">
+
+            <p id='crew-description'>Douglas Gerald Hurley is an American engineer, former Marine Corps pilot
+                and former NASA astronaut. He launched into space for the third time as
+                commander of Crew Dragon Demo-2.</p>
+        </article>
+
+        <div>
+
+        </div>
+        <div role="tablist" class="dot-indicators flex">
+            <button tabindex="0" role="tab" id="0" aria-selected="true"><span class="sr-only"></span></button>
+            <button tabindex="-1" role="tab" id="1" aria-selected="false"><span class="sr-only"></span></button>
+            <button tabindex="-1" role="tab" id="2" aria-selected="false"><span class="sr-only"></span></button>
+            <button tabindex="-1" role="tab" id="3" aria-selected="false"><span class="sr-only"></span></button>
+        </div>
+
+        <picture id="crew-pic">
+            <source srcset="starter-code/assets/crew/image-douglas-hurley.webp">
+            <img src="starter-code/assets/crew/image-douglas-hurley.png" alt="crew member picture" />
+        </picture>
+
+
+
     </main>
 
-
-
-</body>
 
 </html>

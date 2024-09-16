@@ -1,4 +1,4 @@
-import { fetchData } from "./index.js";
+import { fetchData } from "./index-temp.js";
 
 const pageData = await fetchData();
 

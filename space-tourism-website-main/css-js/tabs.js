@@ -48,5 +48,5 @@ function changeTabPanel(e) {
 
   prevElem.classList.remove("active");
 
-  e.target;
+  console.log("hi");
 }

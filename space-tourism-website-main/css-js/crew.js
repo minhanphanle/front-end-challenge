@@ -1,4 +1,4 @@
-import { fetchData } from "./index.js";
+import { fetchData } from "./index-temp.js";
 
 const pageData = await fetchData();
 
@@ -22,11 +22,13 @@ allCrew.forEach((el) => {
     for (const [key, val] of Object.entries(dict)) {
       const elem = document.getElementById(key);
       if (key === "crew-pic") {
-        elem.innerHTML = `            <source srcset=${images.webp} type="image/webp">
-        <img src=${images.png} alt="${dict["crew-role"]} ${dict["crew-name"]}">`;
-      }
+        const sourceElem = elem.querySelector("source");
+        const imgElem = elem.querySelector("img");
 
-      if (elem) {
+        imgElem.src = `${images.png}`;
+        imgElem.alt = `${dict["crew-name"]}`;
+        sourceElem.setAttribute("srcset", images.webp);
+      } else {
         elem.innerHTML = val;
       }
     }
